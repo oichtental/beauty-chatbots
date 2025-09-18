@@ -40,12 +40,43 @@ Credentials managed via systemd environment file:
 - `/etc/systemd/system/chatbot.env` (production only)
 - Contains: `OPENAI_API_KEY`, `WAXBABY_API_KEY`, `EUNOIA_API_KEY`
 
-## 🔧 Local Development
+## 🔧 Development Workflow
 
-1. Clone repository
-2. Install requirements: `pip install -r requirements.txt`
-3. Create `.env` file with your API keys
-4. Run: `python chatbot_api.py`
+### Local Development Setup
+```bash
+# 1. Clone repository
+git clone https://github.com/oichtental/beauty-chatbots.git
+cd beauty-chatbots
+
+# 2. Set up environment
+cp .env.example .env
+# Edit .env with your API keys
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Run locally
+python wax-baby-chatbot_api.py    # WAX! Baby on localhost:8000
+python eunoia/chatbot_api.py      # EUNOIA on localhost:8001
+```
+
+### Deployment to Production
+```bash
+# After making changes and testing locally:
+git add .
+git commit -m "Your changes"
+git push
+
+# Deploy to production server
+./deploy.sh
+```
+
+**Deployment Flow:**
+1. 🔧 Develop locally with `.env` file
+2. 🧪 Test changes locally
+3. 📤 Commit to GitHub
+4. 🚀 Deploy to production with `./deploy.sh`
+5. ✅ Automatic backup, restart, and health check
 
 ## 🏗️ Architecture
 
